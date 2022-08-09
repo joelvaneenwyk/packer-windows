@@ -6,7 +6,6 @@
             publicKeyToken="31bf3856ad364e35" language="neutral"
             versionScope="nonSxS" processorArchitecture="amd64"
             xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-
             <!--
                  This makes the VirtIO drivers available to Windows, assuming that
                  the VirtIO driver disk at https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
@@ -17,49 +16,38 @@
                 <PathAndCredentials wcm:action="add" wcm:keyValue="2">
                     <Path>E:\viostor\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="3">
                     <Path>E:\NetKVM\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="4">
                     <Path>E:\Balloon\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="5">
                     <Path>E:\pvpanic\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="6">
                     <Path>E:\qemupciserial\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="7">
                     <Path>E:\qxl\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="8">
                     <Path>E:\vioinput\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="9">
                     <Path>E:\viorng\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="10">
                     <Path>E:\vioscsi\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="11">
                     <Path>E:\vioserial\w7\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="12">
                     <Path>K:\kaboom\w7\amd64</Path>
                 </PathAndCredentials>
             </DriverPaths>
         </component>
-
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <DiskConfiguration>
                 <Disk wcm:action="add">
@@ -90,10 +78,11 @@
                 <FullName>Vagrant Administrator</FullName>
                 <Organization>Vagrant Inc.</Organization>
                 <!-- Product Key from http://technet.microsoft.com/en-us/library/jj612867.aspx -->
+                <!-- https://docs.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys -->
                 <ProductKey>
                     <!-- Do not uncomment the Key element if you are using trial ISOs -->
                     <!-- You must uncomment the Key element (and optionally insert your own key) if you are using retail or volume license ISOs -->
-                    <!--<Key>33PXH-7Y6KF-2VJC9-XBBR8-HVTHH</Key>-->
+                    <Key>YDRBP-3D83W-TY26F-D46B2-XCKRJ</Key>
                     <WillShowUI>Never</WillShowUI>
                 </ProductKey>
             </UserData>
@@ -108,7 +97,9 @@
                     <InstallFrom>
                         <MetaData wcm:action="add">
                             <Key>/IMAGE/NAME</Key>
-                            <Value>Windows 7 ENTERPRISE</Value>
+                            <!-- Change this if you are using a different version otherwise it will get stuck on OS edition -->
+                            <!-- https://superuser.com/questions/715368/how-to-bypass-the-os-edition-selection-page-in-a-windows-unattended-setup -->
+                            <Value>Windows 7 ENTERPRISE N</Value>
                         </MetaData>
                     </InstallFrom>
                 </OSImage>
