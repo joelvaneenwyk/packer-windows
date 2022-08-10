@@ -96,10 +96,16 @@
                     <InstallToAvailablePartition>false</InstallToAvailablePartition>
                     <InstallFrom>
                         <MetaData wcm:action="add">
+                            <Key>/IMAGE/INDEX</Key>
+                            <Value>1</Value>
+                            <!--
                             <Key>/IMAGE/NAME</Key>
+                            -->
                             <!-- Change this if you are using a different version otherwise it will get stuck on OS edition -->
                             <!-- https://superuser.com/questions/715368/how-to-bypass-the-os-edition-selection-page-in-a-windows-unattended-setup -->
-                            <Value>Windows 7 ENTERPRISE N</Value>
+                            <!--
+                            <Value>Windows 7 Enterprise N</Value>
+                            -->
                         </MetaData>
                     </InstallFrom>
                 </OSImage>

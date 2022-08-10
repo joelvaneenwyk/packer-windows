@@ -6,7 +6,6 @@
             publicKeyToken="31bf3856ad364e35" language="neutral"
             versionScope="nonSxS" processorArchitecture="amd64"
             xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-
             <!--
                  This makes the VirtIO drivers available to Windows, assuming that
                  the VirtIO driver disk at https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
@@ -17,45 +16,35 @@
                 <PathAndCredentials wcm:action="add" wcm:keyValue="2">
                     <Path>E:\viostor\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="3">
                     <Path>E:\NetKVM\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="4">
                     <Path>E:\Balloon\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="5">
                     <Path>E:\pvpanic\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="6">
                     <Path>E:\qemupciserial\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="7">
                     <Path>E:\qxldod\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="8">
                     <Path>E:\vioinput\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="9">
                     <Path>E:\viorng\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="10">
                     <Path>E:\vioscsi\w10\amd64</Path>
                 </PathAndCredentials>
-
                 <PathAndCredentials wcm:action="add" wcm:keyValue="11">
                     <Path>E:\vioserial\w10\amd64</Path>
                 </PathAndCredentials>
             </DriverPaths>
         </component>
-        
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <DiskConfiguration>
                 <Disk wcm:action="add">
@@ -85,7 +74,6 @@
                 <AcceptEula>true</AcceptEula>
                 <FullName>Vagrant</FullName>
                 <Organization>Vagrant</Organization>
-
                 <!--
                     NOTE: If you are re-configuring this for use of a retail key
                     and using a retail ISO, you need to adjust the <ProductKey> block
@@ -98,7 +86,6 @@
 
                     Notice the addition of the `<Key>` element.
                 -->
-
                 <!-- Product Key from https://www.microsoft.com/en-us/evalcenter/evaluate-windows-10-enterprise -->
                 <ProductKey>2FMYP-QCY43-QR9VK-WTVCK
                     <WillShowUI>Never</WillShowUI>
@@ -115,7 +102,7 @@
                     <InstallFrom>
                         <MetaData wcm:action="add">
                             <Key>/IMAGE/NAME</Key>
-                            <Value>Windows 10 Enterprise Evaluation</Value>
+                            <Value>Windows 10 Enterprise N LTSC</Value>
                         </MetaData>
                     </InstallFrom>
                 </OSImage>

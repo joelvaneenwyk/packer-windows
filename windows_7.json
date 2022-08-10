@@ -224,7 +224,7 @@
     }
   ],
   "variables": {
-    "autounattend": "./tmp/7/Autounattend.xml",
+    "autounattend": "./answer_files/7/Autounattend.xml",
     "disk_size": "61440",
     "memory": "2048",
     "headless": "false",

@@ -1,6 +1,5 @@
 {
-  "builders": [
-    {
+  "builders": [{
       "boot_command": [
         "<leftShiftOn><f10><leftShiftOff><wait>",
         "reg add HKLM\\SYSTEM\\Setup\\LabConfig /t REG_DWORD /v BypassTPMCheck /d 1<return>",
@@ -160,16 +159,13 @@
       "winrm_username": "vagrant"
     }
   ],
-  "post-processors": [
-    {
-      "keep_input_artifact": false,
-      "output": "windows_11_{{.Provider}}.box",
-      "type": "vagrant",
-      "vagrantfile_template": "vagrantfile-windows_10.template"
-    }
-  ],
-  "provisioners": [
-    {
+  "post-processors": [{
+    "keep_input_artifact": false,
+    "output": "windows_11_{{.Provider}}.box",
+    "type": "vagrant",
+    "vagrantfile_template": "vagrantfile-windows_10.template"
+  }],
+  "provisioners": [{
       "execute_command": "{{ .Vars }} cmd /c \"{{ .Path }}\"",
       "remote_path": "/tmp/script.bat",
       "scripts": [
@@ -214,8 +210,8 @@
     "disk_type_id": "1",
     "memory": "4096",
     "headless": "false",
-    "iso_checksum": "sha256:e8b1d2a1a85a09b4bf6154084a8be8e3c814894a15a7bcf3e8e63fcfa9a528cb",
-    "iso_url": "https://software-download.microsoft.com/download/sg/22000.194.210913-1444.co_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso",
+    "iso_checksum": "sha256:cd1a71d187fbe2a3551009e59117f3a57e96447536ed08a5eb930f47bbc7e80b",
+    "iso_url": "./iso/en-us_windows_11_business_editions_version_21h2_updated_july_2022_x64_dvd_e2059dd9.iso",
     "restart_timeout": "5m",
     "vhv_enable": "false",
     "virtio_win_iso": "~/virtio-win.iso",
