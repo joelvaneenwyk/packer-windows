@@ -51,7 +51,7 @@ can modify this by editing the Autounattend.xml file, changing the
 
 To retrieve the correct image name from an ISO file use the following two commands.
 
-```
+```powershell
 PS C:\> Mount-DiskImage -ImagePath C:\iso\17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso
 PS C:\> Get-WindowsImage -ImagePath e:\sources\install.wim
 
@@ -93,7 +93,7 @@ need to update the `UserData`>`ProductKey` element as follows:
 * Insert your product key into the `Key` element
 
 If you are going to configure your VM as a KMS client, you can use the product
-keys at http://technet.microsoft.com/en-us/library/jj612867.aspx. These are the
+keys at [Appendix A: KMS Client Setup Keys | Microsoft Docs](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj612867(v=ws.11)?redirectedfrom=MSDN). These are the
 default values used in the `Key` element.
 
 ### Using existing ISOs
@@ -104,7 +104,7 @@ these additional variables:
 * iso_url - path to existing ISO
 * iso_checksum - md5sum of existing ISO (if different)
 
-```
+```bash
 packer build -var 'iso_url=./server2016.iso' .\windows_2016.json
 ```
 
@@ -180,7 +180,7 @@ If you are running Windows 10, Windows Server 2016 or later, then you can also u
 a Hyper-V virtual machine. I have the ISO already downloaded to save time, and
 only have Hyper-V installed on my laptop, so I run:
 
-```
+```bash
 packer build --only hyperv-iso -var 'hyperv_switchname=Ethernet' -var 'iso_url=./server2016.iso' .\windows_2016_docker.json
 ```
 
@@ -196,7 +196,7 @@ Some of these images use Hyper-V "Generation 2" VMs to enable the latest feature
 
 Before running `packer build`, be sure to run `./make_unattend_iso.ps1` first. Otherwise the build will fail on a missing ISO file
 
-```none
+```log
 hyperv-iso output will be in this color.
 
 1 error(s) occurred:
@@ -216,7 +216,7 @@ To build a KVM/qemu box, first make sure:
 
 You can use the following sample command to build a KVM/qemu box:
 
-```
+```bash
 packer build --only=qemu --var virtio_win_iso=./virtio-win.iso ./windows_2019_docker.json
 ```
 
@@ -225,18 +225,19 @@ packer build --only=qemu --var virtio_win_iso=./virtio-win.iso ./windows_2019_do
 In case you're using Parallels, you can now build the `Windows Server 2019 with Docker` VM.
 
 Prerequisites:
+
 * Parallels Pro or Business, version 11 and up.
-* Vagrant Parallels Provider: https://github.com/Parallels/vagrant-parallels
-* Parallels Virtualization SDK for Intel Mac (https://www.parallels.com/download/pvsdk/intel/)
+* [Vagrant Parallels Provider](https://github.com/Parallels/vagrant-parallels)
+* [Parallels Virtualization SDK for Intel Mac](https://www.parallels.com/download/pvsdk/intel/)
 
 You can use the following sample command to build a Parallels VM:
 
-```
+```bash
 packer build --only=parallels-iso windows_2019_docker.json
 ```
 
 The Parallels builder config turns `efi boot` off in order to use the same answer file like all the other builders. If you find you need to turn `efi boot` on then make sure to adjust the appropriate answer file, especially the section regarding the partitioning of the disk.
-If you need to further customize the VM, consult the documentation at https://www.packer.io/docs/builders/parallels-iso.html.
+If you need to further customize the VM, consult the documentation at [Parallels ISO - Builders | Packer by HashiCorp](https://www.packer.io/plugins/builders/parallels/iso).
 
 ### VirtualBox support
 
@@ -250,7 +251,7 @@ packer build --only=virtualbox-iso windows_2022_docker.json
 After building, you can expect a box package like `windows_2022_docker_virtualbox.box`
 in the working directory.
 
-### Using .box Files With Vagrant
+### Using `.box` Files With Vagrant
 
 The generated box files include a Vagrantfile template that is suitable for use
 with Vagrant 1.7.4+, but the latest version is always recommended.

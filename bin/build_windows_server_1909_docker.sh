@@ -8,5 +8,5 @@ packer build \
   --only=vmware-iso \
   --var vhv_enable=true \
   --var iso_url=~/packer_cache/msdn/en_windows_server_version_1909_x64_dvd_894c6446.iso \
-  "./templates/windows_server_1909_docker.json"
+  "./windows_server_1909_docker.json"
 # --var autounattend=./tmp/1909/Autounattend.xml \

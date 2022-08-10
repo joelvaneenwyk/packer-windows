@@ -9,4 +9,4 @@ cd "$TEMPLATES" || true
 
 packer build --only=vmware-iso \
   --var iso_url=~/packer_cache/22000.194.210913-1444.co_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso \
-  "./templates/windows_11.json"
+  "./windows_11.json"

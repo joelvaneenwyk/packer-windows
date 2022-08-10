@@ -215,6 +215,6 @@ build {
   post-processor "vagrant" {
     keep_input_artifact  = false
     output               = "windows_7_<no value>.box"
-    vagrantfile_template = "vagrantfile-windows_7.template"
+    vagrantfile_template = "./vagrant/vagrantfile-windows_7.template"
   }
 }

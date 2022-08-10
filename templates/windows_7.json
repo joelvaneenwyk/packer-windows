@@ -126,7 +126,7 @@
     "keep_input_artifact": false,
     "output": "windows_7_{{.Provider}}.box",
     "type": "vagrant",
-    "vagrantfile_template": "vagrantfile-windows_7.template"
+    "vagrantfile_template": "./vagrant/vagrantfile-windows_7.template"
   }],
   "provisioners": [{
       "script": "./scripts/win-7-update-sp1.ps1",

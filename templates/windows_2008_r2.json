@@ -59,7 +59,7 @@
       "keep_input_artifact": false,
       "output": "windows_2008_r2_{{.Provider}}.box",
       "type": "vagrant",
-      "vagrantfile_template": "vagrantfile-windows_2008_r2.template"
+      "vagrantfile_template": "./vagrant/vagrantfile-windows_2008_r2.template"
     }
   ],
   "provisioners": [

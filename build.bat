@@ -16,5 +16,7 @@ if "%~1"=="" (
 )
 shift
 
-echo ##[cmd] packer build -only=!_filter! "%~dp0!_option!" %1 %2 %3 %4 %5 %6 %7 %8 %9
-packer build -only=!_filter! "%~dp0!_option!" %1 %2 %3 %4 %5 %6 %7 %8 %9
+cd /d "%~dp0templates"
+
+echo ##[cmd] packer build -only=!_filter! "!_option!" %1 %2 %3 %4 %5 %6 %7 %8 %9
+packer build -only=!_filter! "!_option!" %1 %2 %3 %4 %5 %6 %7 %8 %9

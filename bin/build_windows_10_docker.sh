@@ -7,4 +7,4 @@ cd "$TEMPLATES" || true
 packer build \
     --only=vmware-vmx \
     --var source_path=~/.vagrant.d/boxes/windows_10/0/vmware_desktop/windows_10.vmx \
-    "./templates/windows_10_docker.json"
+    "./windows_10_docker.json"

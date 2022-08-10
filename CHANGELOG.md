@@ -1,3 +1,5 @@
+# Changelog
+
 ## Unreleased
 
 * Fixed issue with Console Output (#245)
