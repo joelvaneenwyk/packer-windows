@@ -1,5 +1,9 @@
 #!/bin/bash
-# packer build --only=vmware-iso --var iso_url=~/packer_cache/14393.0.160715-1616.RS1_RELEASE_SERVER_EVAL_X64FRE_EN-US.ISO windows_2016_docker.json
+
+TEMPLATES=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && cd ../templates && pwd)
+cd "$TEMPLATES" || true
+
+# packer build --only=vmware-iso --var iso_url=~/packer_cache/14393.0.160715-1616.RS1_RELEASE_SERVER_EVAL_X64FRE_EN-US.ISO "./templates/windows_2016_docker.json"
 
 # MSDN ISO
 packer build \
@@ -9,6 +13,6 @@ packer build \
   --var iso_checksum=F185197AF68FAE4F0E06510A4579FC511BA27616 \
   --var iso_checksum_type=sha1 \
   --var autounattend=./tmp/2016_core/Autounattend.xml \
-  windows_2016_docker.json
+  "./templates/windows_2016_docker.json"
 #  --var disk_type_id=3 \
 #  --var disk_size=30720 \

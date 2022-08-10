@@ -1,16 +1,18 @@
 .DS_Store
+
 /iso/*
 !/iso/README.md
-/output-*/
-/*.box
-/packer_cache/
+
+output-*/
+*.box
+packer_cache/
 *.log
 *~
 *.swp
-/output/
+output/
 *.webm
 tmp
-/issues/
+issues/
 *.iso
 path-to.vmx
 

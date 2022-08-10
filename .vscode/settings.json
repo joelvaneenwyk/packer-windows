@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "autounattend",
+        "HKLM",
+        "modifyvm",
+        "virtio",
+        "writeback"
+    ],
+    "files.associations": {
+        "vagrantfile-*": "ruby"
+    }
+}

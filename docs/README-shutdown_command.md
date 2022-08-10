@@ -1,4 +1,5 @@
-# Packer shutdown_command
+# Packer `shutdown_command`
+
 There is an alternative for the normal Windows shutdown command.
 Normally we use something like this to shutdown the VM in packer.
 
