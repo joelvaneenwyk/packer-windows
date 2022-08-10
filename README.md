@@ -2,7 +2,9 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/76pea1oexae5ca05?svg=true)](https://ci.appveyor.com/project/StefanScherer/packer-windows)
 
-### Introduction
+[Downloads - Visual Studio Subscriptions Portal](https://my.visualstudio.com/Downloads?q=Windows%2010)
+
+## Introduction
 
 This repository contains Windows templates that can be used to create boxes for
 Vagrant using Packer ([Website](https://www.packer.io))
@@ -226,30 +228,27 @@ Prerequisites:
 * Parallels Pro or Business, version 11 and up.
 * Vagrant Parallels Provider: https://github.com/Parallels/vagrant-parallels
 * Parallels Virtualization SDK for Intel Mac (https://www.parallels.com/download/pvsdk/intel/)
-  
+
 You can use the following sample command to build a Parallels VM:
 
 ```
 packer build --only=parallels-iso windows_2019_docker.json
 ```
 
-
 The Parallels builder config turns `efi boot` off in order to use the same answer file like all the other builders. If you find you need to turn `efi boot` on then make sure to adjust the appropriate answer file, especially the section regarding the partitioning of the disk.
-If you need to further customize the VM, consult the documentation at https://www.packer.io/docs/builders/parallels-iso.html. 
-
+If you need to further customize the VM, consult the documentation at https://www.packer.io/docs/builders/parallels-iso.html.
 
 ### VirtualBox support
 
 When using VirtualBox, you can use the following sample command to build a
 corresponding VM image:
 
-```
+```bash
 packer build --only=virtualbox-iso windows_2022_docker.json
 ```
 
 After building, you can expect a box package like `windows_2022_docker_virtualbox.box`
 in the working directory.
-
 
 ### Using .box Files With Vagrant
 
@@ -258,7 +257,7 @@ with Vagrant 1.7.4+, but the latest version is always recommended.
 
 Example Steps for Hyper-V:
 
-```
+```bash
 vagrant box add windows_2016_docker windows_2016_docker_hyperv.box
 vagrant init windows_2016_docker
 vagrant up --provider hyperv
