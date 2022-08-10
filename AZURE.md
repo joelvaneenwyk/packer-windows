@@ -14,7 +14,7 @@ Read https://www.packer.io/docs/builders/azure-setup.html
 
 First, you create an app in Azure Active Directory:
 
-```
+```bash
 azure ad app create --json \
   --name "Service Principal Packer" \
   --home-page "https://packer.io" \
@@ -28,7 +28,7 @@ The output of this command shows you the application ID **appId**:
 In the next step, we promote our app to be a "service principal", and we list
 the service principals we have:
 
-```
+```bash
 azure ad sp create --json -vv --applicationId 1326f47c-eaea-42aa-8aa8-ff99fbaf3da9
 ```
 
@@ -36,19 +36,19 @@ You will get the **appId** and the **objectId**.
 
 Now lookup you Azure Active Directory TenantID with
 
-```
+```bash
 azure account show --json | jq '.[].tenantId'
 ```
 
 Now lookup your Azure Subscription ID with
 
-```
+```bash
 azure account show --json | jq '.[].id'
 ```
 
-As a last step of the security setup, you can assign your service principal ‘Contributor’ rights to your subscription (replace $spObjectId and $subscriptionId with proper values):
+As a last step of the security setup, you can assign your service principal 'Contributor' rights to your subscription (replace $spObjectId and $subscriptionId with proper values):
 
-```
+```bash
 azure role assignment create \
   --objectId $spObjectId \
   --roleName Contributor \
@@ -57,7 +57,7 @@ azure role assignment create \
 
 ## Pick a location
 
-```
+```bash
 azure location list
 ```
 
@@ -65,29 +65,29 @@ azure location list
 
 First list the publishers, but normally we choose `MicrosoftWindowsServer` as publisher.
 
-```
+```bash
 azure vm image list-publishers westeurope
 ```
 
 Now list the images available for that publisher
 
-```
+```bash
 azure vm image list -l westeurope MicrosoftWindowsServer
 ```
 
 The interesting ones might be
 
-```
-data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter                  Windows  2016.0.20161010  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.0.20161010                
-data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter                  Windows  2016.0.20161108  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.0.20161108                
-data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter                  Windows  2016.0.20161213  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.0.20161213                
+```log
+data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter                  Windows  2016.0.20161010  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.0.20161010
+data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter                  Windows  2016.0.20161108  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.0.20161108
+data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter                  Windows  2016.0.20161213  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter:2016.0.20161213
 data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter-with-Containers  Windows  2016.0.20161012  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:2016.0.20161012
 data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter-with-Containers  Windows  2016.0.20161025  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:2016.0.20161025
 data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter-with-Containers  Windows  2016.0.20161108  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:2016.0.20161108
 data:    MicrosoftWindowsServer  WindowsServer      2016-Datacenter-with-Containers  Windows  2016.0.20161213  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Datacenter-with-Containers:2016.0.20161213
-data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server                 Windows  2016.0.20161012  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Nano-Server:2016.0.20161012               
-data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server                 Windows  2016.0.20161109  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Nano-Server:2016.0.20161109               
-data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server                 Windows  2016.0.20170113  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Nano-Server:2016.0.20170113               
+data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server                 Windows  2016.0.20161012  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Nano-Server:2016.0.20161012
+data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server                 Windows  2016.0.20161109  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Nano-Server:2016.0.20161109
+data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server                 Windows  2016.0.20170113  westeurope  MicrosoftWindowsServer:WindowsServer:2016-Nano-Server:2016.0.20170113
 ```
 
 
@@ -95,13 +95,13 @@ data:    MicrosoftWindowsServer  WindowsServer      2016-Nano-Server            
 
 ## Create Resource Group
 
-```
+```bash
 azure group create myaccount westeurope
 ```
 
 ## Create a storage account
 
-```
+```bash
 azure storage account create --sku-name LRS --location westeurope --kind BlobStorage --access-tier Cool --resource-group myaccount myaccount
 ```
 
@@ -109,7 +109,7 @@ azure storage account create --sku-name LRS --location westeurope --kind BlobSto
 
 I use `pass` for my secrets.
 
-```
+```bash
 export PACKER_AZURE_AD_TENANT_ID=xxx
 export PACKER_AZURE_SUBSCRIPTION_ID=xxx
 export PACKER_AZURE_OBJECT_ID=xxx
@@ -123,7 +123,7 @@ export PACKER_AZURE_STORAGE_ACCOUNT=myaccount
 
 Load your secrets and run the packer build
 
-```
+```bash
 eval $(pass packer-azure)
 packer build windows_2016_docker_azure.json
 ```
@@ -136,7 +136,7 @@ Create a public container, eg. `vhds`
 
 ### Copy blob
 
-```
+```bash
 azure storage blob copy start https://myaccount.blob.core.windows.net/system/Microsoft.Compute/Images/images/WindowsServer2016Docker-osDisk.vhd vhds
 azure storage blob copy start https://myaccount.blob.core.windows.net/system/Microsoft.Compute/Images/images/WindowsServer2016Docker-osDisk.vhd --dest-container vhds --dest-blob WindowsServer2016Docker.20170122-osDisk.vhd
 ```
